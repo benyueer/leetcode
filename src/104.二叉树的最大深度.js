@@ -26,7 +26,7 @@ function read(root, deep) {
     let l = read(root.left, deep+1)
     let r = read(root.right, deep+1)
     return l > r ? l : r
-    // yueer 123
+    // yueer 1234
 }
 // @lc code=end
 
