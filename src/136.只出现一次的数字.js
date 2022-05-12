@@ -10,7 +10,17 @@
  * @return {number}
  */
 var singleNumber = function(nums) {
-    return nums.reduce((a, b) => a^b)
+    // return nums.reduce((a, b) => a^b)
+    let set = new Set()
+    for (let i = 0; i < nums.length; i++) {
+        if (!set.has(nums[i])) {
+            set.add(nums[i])
+        }
+        else {
+            set.delete(nums[i])
+        }
+    }
+    return Array.from(set.values())[0]
 };
 // @lc code=end
 

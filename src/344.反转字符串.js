@@ -9,14 +9,16 @@
  * @param {character[]} s
  * @return {void} Do not return anything, modify s in-place instead.
  */
-var reverseString = function (s) {
-    for (let i = 0, j = s.length - 1; i < j; i++, j--) {
-        let temp = s[i]
-        s[i] = s[j]
-        s[j] = temp
-    }
-    return s
-
+var reverseString = function(s) {
+  const l = s.length
+  let b = 0, e = l - 1
+  while (b < e) {
+    let t = s[b]
+    s[b] = s[e]
+    s[e] = t
+    b++
+    e--
+  }
 };
 // @lc code=end
 

@@ -19,13 +19,17 @@
  * @return {boolean}
  */
 var isSameTree = function(p, q) {
-    if (p == null && q == null) {
-        return true
+  function compare(p, q) {
+    if (p === null && q === null) {
+      return true
+    } else if (p === null || q === null) {
+      return false
+    } else if (p.val !== q.val) {
+      return false
     }
-    if (p && q) {
-        return p.val === q.val ? isSameTree(p.left, q.left) && isSameTree(p.right, q.right) : false
-    }
-    return false
+    return compare(p.left, q.left) && compare(p.right, q.right)
+  }
+  return compare(p, q)
 };
 // @lc code=end
 
