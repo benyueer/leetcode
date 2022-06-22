@@ -18,7 +18,21 @@
  * @return {number}
  */
 var maxDepth = function(root) {
-    return read(root, 0)
+    // return read(root, 0)
+    if (!root) return 0
+    const queue = []
+    let res = 0
+    queue.push(root)
+    while(queue.length) {
+        res++
+        let len = queue.length
+        for (let i = 0; i< len; i++) {
+            let cur = queue.shift()
+            if (cur.left) queue.push(cur.left)
+            if (cur.right) queue.push(cur.right)
+        }
+    }
+    return res
 };
 function read(root, deep) {
     if (!root) return deep
