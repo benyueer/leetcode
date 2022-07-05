@@ -10,14 +10,15 @@
  * @return {number}
  */
 var maxProfit = function (prices) {
-    if (prices.length === 1) return 0
-    let min = prices[0]
-    let res = -Infinity
-    for (let i = 1; i < prices.length; i++) {
-        min = Math.min(min, prices[i])
-        res = Math.max(res, prices[i] - min)
-    }
-    return res
+  if (prices.length === 1) return 0
+  let cost = prices[0], res = 0
+  for (let i = 1; i< prices.length; i++) {
+    res = Math.max(prices[i] - cost, res)
+    cost = Math.min(cost, prices[i])
+  }
+  console.log(res)
+  return res
 };
 // @lc code=end
 
+maxProfit([7,1,5,3,6,4])
