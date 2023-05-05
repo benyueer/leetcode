@@ -190,11 +190,93 @@ function wiggleMaxLength(nums) {
 
   let res = preDif === 0 ? 1 : 2
   for (let i = 2; i < nums.length; i++) {
-    let cDif = nums[i] - nums[i-1]
-    if ((cDif < 0 && preDif >=0) || (cDif > 0 && preDif <= 0)) {
+    let cDif = nums[i] - nums[i - 1]
+    if ((cDif < 0 && preDif >= 0) || (cDif > 0 && preDif <= 0)) {
       res++
       preDif = cDif
     }
   }
   return res
 }
+
+
+/**
+ * 611. 有效三角形的个数
+ */
+function triangleNumber(nums) {
+  if (nums.length < 3) return 0
+  nums.sort()
+  let res = 0
+
+  for (let k = nums.length - 1; k > 1; k--) {
+    let i = 0, j = k - 1
+
+    while (i < j) {
+      if (nums[i] + nums[j] > nums[k]) {
+        res += j - i
+        j--
+      } else {
+        i++
+      }
+    }
+  }
+
+  return res
+}
+
+
+/**
+ * 2007. 从双倍数组中还原原数组
+ */
+function findOriginalArray(changed) {
+  // if (changed.length % 2 !== 0) return []
+
+  // const base = [], res = []
+  // changed.sort((a, b) => a - b)
+
+  // for (let i = 0; i < changed.length; i++) {
+  //   if (base.length === 0) {
+  //     base.push(changed[i])
+  //   } else {
+  //     if (base[0] * 2 === changed[i]) {
+  //       res.push(base[0])
+  //       base.splice(0, 1)
+  //     } else {
+  //       base.push(changed[i])
+  //     }
+  //   }
+  // }
+
+  // if (base.length === 0) {
+  //   return res
+  // }
+  // return []
+
+  if (changed.length & 1) return []
+
+  let cut = new Array(10e5 + 1).fill(0)
+
+  let res = []
+
+  changed.forEach(x => {
+    cut[x]++
+  })
+
+  for (let i = cut.length - 1; i > 0; i--) {
+    if (!cut[i]) continue
+    if ((i & 1) || cut[i >> 1] < cut[i]) return []
+    cut[i >> 1] -= cut[i]
+    res.push(...new Array(cut[i]).fill(i >> 1))
+  }
+
+  if (cut[0] & 1) return []
+  res.push(...new Array(cut[0] >> 1).fill(0))
+  return res
+}
+
+
+
+
+
+
+

@@ -40,6 +40,8 @@
   - [179. 最大数](https://leetcode.cn/problems/largest-number/)
   - [334. 递增的三元子序列](https://leetcode.cn/problems/increasing-triplet-subsequence/)
   - [376. 摆动序列](https://leetcode.cn/problems/wiggle-subsequence/)
+  - [611. 有效三角形的个数](https://leetcode.cn/problems/valid-triangle-number/)
+  - [2007. 从双倍数组中还原原数组](https://leetcode.cn/problems/find-original-array-from-doubled-array/)
 - 背包问题
 - 最小生成树
 - 单源最短路径
